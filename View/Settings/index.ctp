@@ -1,6 +1,6 @@
 <h2><?php __('Site Settings'); $this->set('title_for_layout', __('Site Settings', true)); ?></h2>
 <?php echo $this->Form->create('Setting'); ?>
-	<?php foreach($this->data as $key => &$setting) : ?>
+	<?php foreach($this->request->data as $key => &$setting) : ?>
 		<?php echo $this->Form->input("Setting." . $setting['Setting']['id'] . ".id", array(
 			'value' => $setting['Setting']['id'])); ?>
 		<?php $params = array(
@@ -13,8 +13,5 @@
 		<?php echo $this->Form->input("Setting." . $setting['Setting']['id'] . ".value", $params); ?>
 	<?php endforeach; ?>
 	<?php echo $this->Form->submit(__('Change Settings', true),
-		array('div' => 'submit cancel')); ?> or 
-	<?php echo $this->Html->link(__('go to dashboard', true),
-		array('controller' => 'users', 'action' => 'dashboard'),
-		array('class' => 'cancel-action')); ?>
+		array('div' => 'submit cancel')); ?>
 <?php echo $this->Form->end(); ?>
